@@ -1,0 +1,15 @@
+.center {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+button {
+    width: 150px;
+    height: 40px;
+    margin-right: 10px;
+    border-color: black;
+}
