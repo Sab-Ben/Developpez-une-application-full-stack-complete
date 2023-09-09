@@ -1,0 +1,30 @@
+@import "src/styles/main.css";
+
+:host-context(app-login) app-header,
+:host-context(register-page) app-header {
+  @include xs() {
+    display: none;
+  }
+}
+
+main {
+  text-align: center;
+  padding: 30px 35px 20px 35px;
+  display: flex;
+  flex-direction: column;
+  @include sm() {
+    flex-direction: row;
+  }
+
+  @include xs() {
+    padding: 30px 10px 20px 10px;
+  }
+
+  .back-link {
+    text-align: left;
+  }
+
+  .content {
+    flex: 1;
+  }
+}

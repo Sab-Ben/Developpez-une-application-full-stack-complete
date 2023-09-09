@@ -5,39 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatIconModule} from "@angular/material/icon";
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
-
-const materialModule = [
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-  MatSnackBarModule,
-  MatToolbarModule,
-]
+import {MeComponent} from "./pages/me/me.component";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {MaterialModule} from "./material.module";
+import {ComponentsModule} from "./component/components.module";
+import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-  ],
+  declarations: [AppComponent, MeComponent, HomeComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
+    MaterialModule,
     HttpClientModule,
-    ...materialModule
+    ReactiveFormsModule,
+    FormsModule,
+    ComponentsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

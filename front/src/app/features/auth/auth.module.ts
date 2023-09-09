@@ -1,33 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './components/register/register.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
+import { LoginComponent } from './components/login/login.component';
+import { ComponentsModule } from 'src/app/component/components.module';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import {AppModule} from "../../app.module";
-
-const materialModules = [
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule
-]
 
 @NgModule({
-    declarations: [
-        RegisterComponent,
-    ],
-    imports: [
-        AuthRoutingModule,
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        ...materialModules
-    ]
+    declarations: [RegisterComponent, LoginComponent],
+    imports: [AuthRoutingModule, ComponentsModule, CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
+    exports: [],
 })
-export class AuthModule { }
+export class AuthModule {}

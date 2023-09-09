@@ -1,23 +1,27 @@
-<div class="register" fxLayout="row" fxLayoutAlign="center center">
-        <mat-card>
-            <div class="img-xs">
-                <img src="../../../../assets/logo_p6.png" alt="logo" />
-            </div>
-            <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
-                <mat-card-content fxLayout="column">
-                    <mat-form-field fxFlex>
-                        <input matInput placeholder="Username" formControlName="userName">
-                    </mat-form-field>
-                    <mat-form-field fxFlex>
-                        <input matInput placeholder="Email" formControlName="email">
-                    </mat-form-field>
-                    <mat-form-field fxFlex>
-                        <input matInput placeholder="Password" formControlName="password">
-                    </mat-form-field>
-                </mat-card-content>
-                <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
-                <span *ngIf="onError" class="error ml2">An error occurred</span>
-            </form>
-        </mat-card>
+<app-layout [withBackLink]="true" link="/" title="Retour à la page de connexion">
+    <div class="img-xs">
+        <img src="../../../../assets/logo_p6.png" alt="logo" />
     </div>
+    <form (ngSubmit)="submit()">
+        <div>
+            <h1>Inscription</h1>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nom d'utilisateur</mat-label>
+                    <input matInput formControlName="username" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Adresse e-mail</mat-label>
+                    <input matInput formControlName="email" type="email" />
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput formControlName="password" type="password" />
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">S'inscrire</button>
+            </form>
+            <p *ngIf="onError" class="error">Une erreur est surtvenue</p>
+        </div>
+    </form>
+</app-layout>
 

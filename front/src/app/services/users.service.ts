@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {Users} from "../interfaces/users";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { Users } from '../interfaces/users';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
+  private cachedUser$?: Observable<Users>;
+  constructor(private http: HttpClient) {}
 
-  private pathService = 'api/user';
+  public me() {
+    if (!this.cachedUser$) {
+      this.cachedUser$ = this.http.get<Users>('/api/user/me');
+    }
 
-  constructor(private httpClient: HttpClient) { }
-
-  public getById(id: string): Observable<Users> {
-    return this.httpClient.get<Users>(`${this.pathService}/${id}`);
+    return this.cachedUser$;
   }
 
-  public delete(id: string): Observable<any> {
-    return this.httpClient.delete(`${this.pathService}/${id}`);
+  public updateMe(data: any) {
+    return this.http.put<Users>('/api/user/me', data);
   }
 }

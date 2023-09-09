@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators} from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
-import { RegisterRequest } from "../../interfaces/register-request";
+import { RegisterRequest } from "../../interfaces/registerRequest";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-register',
@@ -42,14 +43,17 @@ export class RegisterComponent {
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
-              private router: Router,) { }
+              private router: Router,
+              private title : Title)
+  {this.title.setTitle('MDD - Register') }
 
   public submit(): void {
     const registerRequest = this.form.value as RegisterRequest;
     this.authService.register(registerRequest).subscribe({
-          next: (_: void) => this.router.navigate(['/auth/login']),
-          error: _ => this.onError = true,
-        }
-    );
+      next: () => {
+        this.router.navigate(['/auth/login']);
+      },
+      error: () => (this.onError = true),
+    });
   }
 }

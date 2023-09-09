@@ -1,5 +1,6 @@
 package com.openclassrooms.mddapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
@@ -42,6 +43,7 @@ public class Users extends DateTableModel {
     @NonNull
     @Size(min = 8, max = 40)
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
 

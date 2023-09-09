@@ -1,0 +1,21 @@
+<app-layout [withBackLink]="true" link="/" title="Retour à la page de connexion">
+  <div class="img-xs">
+    <img src="../../../../assets/logo_p6.png" alt="logo" />
+  </div>
+  <section class="content">
+    <h1>Se connecter</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail ou nom d'utilisateur</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
+      <button class="submit-btn" mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Se
+        connecter</button>
+    </form>
+    <p *ngIf="onError" class="error">Une erreur est survenue</p>
+  </section>
+</app-layout>
