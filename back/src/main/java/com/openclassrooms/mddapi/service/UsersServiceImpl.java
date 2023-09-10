@@ -11,11 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsersServiceImpl implements UsersService {
 
-    @Autowired
-    private UsersRepository usersRepository;
+    private final UsersRepository usersRepository;
 
-    @Autowired
-    private UsersDetailsService usersDetailsService;
+    private final UsersDetailsService usersDetailsService;
+
+    public UsersServiceImpl(UsersRepository usersRepository, UsersDetailsService usersDetailsService) {
+        this.usersRepository = usersRepository;
+        this.usersDetailsService = usersDetailsService;
+    }
 
     public Users getUserProfile() {
         return this.usersDetailsService.getUser();

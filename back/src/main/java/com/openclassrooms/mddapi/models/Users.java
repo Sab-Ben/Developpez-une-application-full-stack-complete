@@ -8,6 +8,9 @@ import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+import java.util.concurrent.Flow;
+
 @Data
 @Entity
 @Accessors(chain = true)
@@ -36,12 +39,12 @@ public class Users extends DateTableModel {
     private String email;
 
     @NonNull
-    @Size(min = 5, max = 20)
+    @Size(min = 3, max = 20)
     @Column(name = "username")
     private String username;
 
     @NonNull
-    @Size(min = 8, max = 40)
+    @Size(min = 8)
     @Column(name = "password")
     @JsonIgnore
     private String password;

@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsersDetailsService {
 
-        @Autowired
-        private UsersRepository usersRepository;
+        private final UsersRepository usersRepository;
 
-        public Users getUser() {
+    public UsersDetailsService(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
+    }
+
+    public Users getUser() {
             Users users = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             return this.usersRepository.findById(users.getId()).orElseThrow();
         }

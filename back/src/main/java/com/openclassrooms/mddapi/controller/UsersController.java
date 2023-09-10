@@ -5,22 +5,23 @@ import com.openclassrooms.mddapi.models.Users;
 import com.openclassrooms.mddapi.service.UsersServiceImpl;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/user")
-public class UsersController {
+public class  UsersController {
 
-    @Autowired
-    private UsersServiceImpl usersService;
+    private final UsersServiceImpl usersService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    public UsersController(UsersServiceImpl usersService, ModelMapper modelMapper) {
+        this.usersService = usersService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/me")
     public ResponseEntity<?> findUser() {

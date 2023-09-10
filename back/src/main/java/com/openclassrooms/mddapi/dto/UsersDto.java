@@ -23,11 +23,11 @@ public class UsersDto {
     private String email;
 
     @NonNull
-    @Size(min = 5, max = 20)
+    @Size(min = 3, max = 20)
     private String username;
 
     @JsonIgnore
-    @Size(min = 8, max = 40)
+    @Size(min = 8)
     private String password;
 
     private Instant created_at;

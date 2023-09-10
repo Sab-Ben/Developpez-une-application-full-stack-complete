@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.service;
 
 import com.openclassrooms.mddapi.exception.BadRequestException;
+import com.openclassrooms.mddapi.exception.UnauthorizedException;
 import com.openclassrooms.mddapi.models.Users;
 import com.openclassrooms.mddapi.payload.request.LoginRequest;
 import com.openclassrooms.mddapi.payload.request.RegisterRequest;
@@ -15,17 +16,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 @Service
 public class AuthServiceImpl implements AuthService{
-    @Autowired
     private final UsersRepository usersRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    @Autowired
-    private JwtProvider jwtProvider;
+    private final JwtProvider jwtProvider;
 
-    public AuthServiceImpl(UsersRepository userRepository){
-        this.usersRepository = userRepository;
+    public AuthServiceImpl(UsersRepository userRepository, UsersRepository usersRepository, BCryptPasswordEncoder passwordEncoder, JwtProvider jwtProvider){
+        this.usersRepository = usersRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtProvider = jwtProvider;
     }
 
     public JwtResponse login(LoginRequest loginRequest){
@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService{
         Users users = this.usersRepository.findByEmailOrUsername(username);
 
         if (!this.isUserValid(users, password)){
-            throw new BadRequestException();
+            throw new UnauthorizedException();
         }
 
         return this.jwtProvider.provideJwt(users);

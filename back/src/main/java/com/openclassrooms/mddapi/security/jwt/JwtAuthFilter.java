@@ -21,11 +21,14 @@ import static io.micrometer.common.util.StringUtils.isEmpty;
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private UsersRepository usersRepo;
+    private final UsersRepository usersRepo;
 
-    @Autowired
-    private JwtProvider jwtProvider;
+    private final JwtProvider jwtProvider;
+
+    public JwtAuthFilter(UsersRepository usersRepo, JwtProvider jwtProvider) {
+        this.usersRepo = usersRepo;
+        this.jwtProvider = jwtProvider;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest req,
