@@ -1,0 +1,23 @@
+@import "../../../styles/main.scss";
+
+.mat-mdc-button.logout {
+  color: $alert-color;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+h1,
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+mat-divider {
+  margin-bottom: 20px;
+}
+
+.update {
+  &--valid {
+    color: green;
+  }
+}

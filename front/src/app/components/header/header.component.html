@@ -1,0 +1,49 @@
+<header>
+  <img src="../../../assets/logo_p6.png" alt="" />
+  <nav *ngIf="$isLogged |async">
+    <button class="hamburger" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" yPosition="above" [overlapTrigger]="true" backdropClass="mobileMenuBackdrop"
+      class="mobilePanelMenu">
+      <div class="mobileLinksContainer">
+        <a mat-menu-item class="mobileMenuItem" routerLink="/articles" routerLinkActive="activeLink">
+          Articles
+        </a>
+        <a mat-menu-item class="mobileMenuItem" routerLink="/topics" routerLinkActive="activeLink">
+          Thèmes
+        </a>
+        <a mat-menu-item class="mobileMenuItem userIcon" routerLink="/profile">
+          <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="&#240;&#159;&#166;&#134; icon &#34;user&#34;">
+              <path id="Vector"
+                d="M1.00011 29V25.8817C1.00011 24.2276 1.65719 22.6413 2.82679 21.4717C3.99639 20.3021 5.58271 19.645 7.23678 19.645H19.7101C21.3642 19.645 22.9505 20.3021 24.1201 21.4717C25.2897 22.6413 25.9468 24.2276 25.9468 25.8817V29"
+                stroke="black" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="Vector_2"
+                d="M13.4734 13.4733C10.029 13.4733 7.23677 10.6811 7.23677 7.23667C7.23677 3.79225 10.029 1 13.4734 1C16.9178 1 19.7101 3.79225 19.7101 7.23667C19.7101 10.6811 16.9178 13.4733 13.4734 13.4733Z"
+                stroke="black" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+          </svg>
+        </a>
+      </div>
+    </mat-menu>
+
+    <mat-nav-list class="sm-list">
+      <a mat-list-item *ngFor="let route of ROUTES" routerLinkActive="activeLink"
+        [routerLink]="route.path">{{route.label}}</a>
+      <a class="userIcon" routerLink="/profile" routerLinkActive="profileLink">
+        <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="&#240;&#159;&#166;&#134; icon &#34;user&#34;">
+            <path id="Vector"
+              d="M1.00011 29V25.8817C1.00011 24.2276 1.65719 22.6413 2.82679 21.4717C3.99639 20.3021 5.58271 19.645 7.23678 19.645H19.7101C21.3642 19.645 22.9505 20.3021 24.1201 21.4717C25.2897 22.6413 25.9468 24.2276 25.9468 25.8817V29"
+              stroke="black" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Vector_2"
+              d="M13.4734 13.4733C10.029 13.4733 7.23677 10.6811 7.23677 7.23667C7.23677 3.79225 10.029 1 13.4734 1C16.9178 1 19.7101 3.79225 19.7101 7.23667C19.7101 10.6811 16.9178 13.4733 13.4734 13.4733Z"
+              stroke="black" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </svg>
+      </a>
+
+    </mat-nav-list>
+  </nav>
+</header>
