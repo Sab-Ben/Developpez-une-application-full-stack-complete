@@ -35,7 +35,7 @@ export class TopicsCardComponent implements OnInit, OnDestroy {
   }
 
   private unsubscribe(): void {
-    this.topicsService.unsubscribeFromTheme(this.topics.id).subscribe({
+    this.topicsService.unsubscribeFromTopics(this.topics.id).subscribe({
       next: () => {
         this.userSessionService.setSubscriptions(
           this.userSessionService.subscriptions.filter((subscription) => subscription.id !== this.topics.id)

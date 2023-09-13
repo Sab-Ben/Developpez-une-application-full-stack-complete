@@ -12,11 +12,13 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TopicsModule } from './feature/topics/topics.module';
+import { PostsModule } from "./feature/posts/posts.module";
 
 @NgModule({
   declarations: [AppComponent, ProfileComponent, AuthComponent, NotFoundComponent],
   imports: [
     TopicsModule,
+    PostsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -8,12 +8,15 @@ import com.openclassrooms.mddapi.payload.request.RegisterRequest;
 import com.openclassrooms.mddapi.payload.response.JwtResponse;
 import com.openclassrooms.mddapi.repository.UsersRepository;
 import com.openclassrooms.mddapi.security.jwt.JwtProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+/**
+ * The type Auth service implements.
+ */
 @Service
 public class AuthServiceImpl implements AuthService{
     private final UsersRepository usersRepository;
@@ -56,13 +59,13 @@ public class AuthServiceImpl implements AuthService{
 
         String hashedPassword = this.passwordEncoder.encode(password);
 
-        Users users = new Users(
+        Users user = new Users(
                 email,
                 username,
                 hashedPassword
         );
 
-        this.usersRepository.save(users);
+        this.usersRepository.save(user);
 
         return "User registered successfully";
     }

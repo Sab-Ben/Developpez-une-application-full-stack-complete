@@ -18,6 +18,10 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 import static io.micrometer.common.util.StringUtils.isEmpty;
+
+/**
+ * The type Auth token filter.
+ */
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 

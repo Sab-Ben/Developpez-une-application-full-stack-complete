@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Topics } from '../feature/topics/interfaces/subscription.interface';
-import { User } from '../interfaces/user.interface';
+import { Users } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +9,11 @@ import { User } from '../interfaces/user.interface';
 export class UserSessionService {
   public isLogged = false;
   public subscriptions: Topics[] = [];
-  public user: User = {} as User;
+  public user: Users = {} as Users;
 
   private isLoggedSubject = new BehaviorSubject<boolean>(this.isLogged);
   private subscriptionsSubject = new BehaviorSubject<Topics[]>(this.subscriptions);
-  private userInformationSubject = new BehaviorSubject<User>(this.user);
+  private userInformationSubject = new BehaviorSubject<Users>(this.user);
 
   public setSubscriptions(subscriptions: Topics[]): void {
     this.subscriptions = subscriptions;
@@ -21,7 +21,7 @@ export class UserSessionService {
     this.subscriptionsSubject.next(this.subscriptions);
   }
 
-  public setUserInformation(user: User): void {
+  public setUserInformation(user: Users): void {
     this.user = user;
     this.userInformationSubject.next(this.user);
   }
@@ -42,7 +42,7 @@ export class UserSessionService {
 
   public logOut(): void {
     localStorage.removeItem('token');
-    this.setUserInformation({} as User);
+    this.setUserInformation({} as Users);
     this.setSubscriptions([]);
     this.isLogged = false;
     this.next();

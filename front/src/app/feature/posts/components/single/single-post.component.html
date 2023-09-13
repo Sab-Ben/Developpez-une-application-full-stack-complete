@@ -1,0 +1,16 @@
+<app-layout [withBackLink]="true" link="/articles">
+  <div class="posts" *ngIf="loaded else loading">
+    <h1>{{posts.title}}</h1>
+    <div class="posts__info">
+      <p>{{posts.updated_at | date: 'dd/MM/yy'}}</p>
+      <p>{{posts.author}}</p>
+      <p>{{ topics }}</p>
+    </div>
+    <p class="posts__description">{{posts.description}}</p>
+    <hr />
+
+  </div>
+  <ng-template #loading>
+    <p>Chargement en cours...</p>
+  </ng-template>
+</app-layout>

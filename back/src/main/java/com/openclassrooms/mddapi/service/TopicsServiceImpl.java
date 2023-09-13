@@ -5,12 +5,14 @@ import com.openclassrooms.mddapi.models.Topics;
 import com.openclassrooms.mddapi.models.Users;
 import com.openclassrooms.mddapi.repository.TopicsRepository;
 import com.openclassrooms.mddapi.security.service.UsersDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+/**
+ * The type Topics service implements.
+ */
 @Service
 public class TopicsServiceImpl implements TopicsService{
 

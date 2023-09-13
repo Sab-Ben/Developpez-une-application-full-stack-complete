@@ -5,9 +5,10 @@ import com.openclassrooms.mddapi.models.Users;
 import com.openclassrooms.mddapi.repository.UsersRepository;
 import com.openclassrooms.mddapi.security.service.UsersDetailsService;
 import jakarta.validation.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * The type Users service implements.
+ */
 @Service
 public class UsersServiceImpl implements UsersService {
 

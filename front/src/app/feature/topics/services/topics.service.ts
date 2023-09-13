@@ -31,7 +31,7 @@ export class TopicsService {
     return this.http.post<void>(`/api/topics/${topicsId}/subscribe`, {});
   }
 
-  public unsubscribeFromTheme(topicsId: number): Observable<void> {
+  public unsubscribeFromTopics(topicsId: number): Observable<void> {
     return this.http.delete<void>(`/api/topics/${topicsId}/unsubscribe`);
   }
 }

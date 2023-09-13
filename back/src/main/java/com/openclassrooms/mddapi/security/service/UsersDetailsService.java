@@ -2,10 +2,11 @@ package com.openclassrooms.mddapi.security.service;
 
 import com.openclassrooms.mddapi.models.Users;
 import com.openclassrooms.mddapi.repository.UsersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
+/**
+ * The type User details service.
+ */
 @Service
 public class UsersDetailsService {
 
@@ -16,7 +17,7 @@ public class UsersDetailsService {
     }
 
     public Users getUser() {
-            Users users = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            return this.usersRepository.findById(users.getId()).orElseThrow();
+            Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return this.usersRepository.findById(user.getId()).orElseThrow();
         }
 }

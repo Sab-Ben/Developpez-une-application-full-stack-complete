@@ -7,7 +7,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-
+/**
+ * The type Date Table Model.
+ */
 @Data
 @MappedSuperclass
 public class DateTableModel {

@@ -7,7 +7,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+/**
+ * The interface Users repository.
+ */
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Long> {
 

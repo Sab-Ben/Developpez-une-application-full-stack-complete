@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   private destroy$!: Subscription;
   constructor(private userSessionService: UserSessionService, private router: Router) {}
   public ROUTES = [
-    { path: '/articles', label: 'Articles' },
+    { path: '/posts', label: 'Articles' },
     { path: '/topics', label: 'Thèmes' },
   ];
 

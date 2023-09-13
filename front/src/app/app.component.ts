@@ -4,7 +4,7 @@ import { UserSessionService } from './services/user-session.service';
 import { TopicsService } from './feature/topics/services/topics.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { User } from './interfaces/user.interface';
+import { Users } from './interfaces/user.interface';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent {
   ) {
     if (localStorage.getItem('token')) {
       this.userService.me().subscribe({
-        next: (user: User) => {
+        next: (user: Users) => {
           if (this.location.path() === '') {
             this.router.navigate(['/profile']);
           }

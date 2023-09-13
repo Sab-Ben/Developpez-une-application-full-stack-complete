@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.time.Instant;
-
+/**
+ * The type User Dto.
+ */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class UsersDto {
 
     private Long id;
@@ -25,12 +26,5 @@ public class UsersDto {
     @NonNull
     @Size(min = 3, max = 20)
     private String username;
-
-    @JsonIgnore
-    @Size(min = 8)
-    private String password;
-
-    private Instant created_at;
-    private Instant updated_at;
 
 }
