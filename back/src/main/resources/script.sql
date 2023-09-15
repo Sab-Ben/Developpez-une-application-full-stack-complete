@@ -31,7 +31,6 @@ CREATE TABLE `POSTS` (
 
 CREATE TABLE `COMMENTS` (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  `title` VARCHAR(50),
   `description` VARCHAR(2000),
   `author_id` int,
   `posts_id` int,

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * The type Post Mapper.
+ * The type Post Mapper extends ModelMapper.
  */
 
 @Component

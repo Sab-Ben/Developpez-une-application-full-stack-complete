@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/topics")
-public class TopicsController {
+public class TopicsController implements SecurityController {
     /**
      * The Topics service.
      */

@@ -2,17 +2,16 @@ package com.openclassrooms.mddapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.List;
 /**
- * The type Topics extends Date Table Model.
+ * The type Comments extends Date Table Model.
  */
+
 @Entity
-@Table(name = "TOPICS")
+@Table(name = "COMMENTS")
 @EntityListeners(AuditingEntityListener.class)
 @Data
 @Accessors(chain = true)
@@ -21,25 +20,27 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Topics extends DateTableModel{
+public class Comments extends DateTableModel{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Size(min = 3)
-    @Column(name = "title")
-    private String title;
 
-    @Size(min = 3)
     @Column(name = "description")
     private String description;
 
-    @JsonIgnore
-    @OneToMany()
-    @JoinTable(
-            name = "SUBSCRIPTIONS",
-            joinColumns = @JoinColumn( name = "topics_id" ),
-            inverseJoinColumns = @JoinColumn( name = "users_id" )
+
+    @OneToOne(
+            fetch = FetchType.EAGER
     )
-    private List<Users> users;
+    @JoinColumn(nullable = false, name = "author_id", referencedColumnName = "id")
+    private Users author;
+
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "posts_id", referencedColumnName = "id")
+    private Posts posts;
 }

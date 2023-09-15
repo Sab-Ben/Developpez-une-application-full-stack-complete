@@ -1,8 +1,12 @@
 package com.openclassrooms.mddapi.controller;
 
+import com.openclassrooms.mddapi.dto.CommentsDto;
 import com.openclassrooms.mddapi.dto.PostsDto;
+import com.openclassrooms.mddapi.mapper.CommentsMapper;
 import com.openclassrooms.mddapi.mapper.PostsMapper;
+import com.openclassrooms.mddapi.models.Comments;
 import com.openclassrooms.mddapi.models.Posts;
+import com.openclassrooms.mddapi.service.CommentsService;
 import com.openclassrooms.mddapi.service.PostsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/posts")
-public class PostsController {
+public class PostsController implements SecurityController{
     /**
      * The Posts service.
      */
@@ -27,19 +31,32 @@ public class PostsController {
     /**
      * The Posts mapper.
      */
-
     private final PostsMapper postsMapper;
 
     /**
-     * Instantiates a new Topic controller.
+     * The Comments service.
+     */
+    private final CommentsService commentsService;
+
+    /**
+     * The Comments mapper.
+     */
+    private final CommentsMapper commentsMapper;
+
+    /**
+     * Instantiates a new Post controller.
      *
      * @param postsService  the posts service
      * @param postsMapper the posts mapper
+     * @param commentsService the comments service
+     * @param commentsMapper the comments mapper
      */
 
-    public PostsController(PostsService postsService, PostsMapper postsMapper) {
+    public PostsController(PostsService postsService, PostsMapper postsMapper, CommentsService commentsService, CommentsMapper commentsMapper) {
         this.postsService = postsService;
         this.postsMapper = postsMapper;
+        this.commentsService = commentsService;
+        this.commentsMapper = commentsMapper;
     }
 
     @Operation(summary = "Get all topics")
@@ -73,7 +90,6 @@ public class PostsController {
         }
     }
 
-
     @Operation(summary = "Create topic")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
@@ -84,4 +100,17 @@ public class PostsController {
         Posts post = this.postsService.create(this.postsMapper.map(postsDto, Posts.class));
         return ResponseEntity.ok(this.postsMapper.map(post, PostsDto.class));
     }
+
+    @Operation(summary = "Get comments")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200"),
+            @ApiResponse(responseCode = "401", content = @Content)
+    })
+    @GetMapping("/{id}/comments")
+    public ResponseEntity<?> findPostsComments(@PathVariable("id") Long id) {
+        Iterable<Comments> comments = this.commentsService.findPostsComments(id);
+        Iterable<CommentsDto> formattedComments = this.commentsMapper.mapToDtoList(comments);
+        return ResponseEntity.ok(formattedComments);
+    }
+
 }

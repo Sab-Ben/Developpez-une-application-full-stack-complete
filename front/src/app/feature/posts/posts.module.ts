@@ -9,12 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SinglePostComponent } from './components/single/single-post.component';
 import { PostsPage } from './components/list/posts.component';
 import { PostsService } from './services/posts.service';
+import { CommentService } from "./services/comment.service";
 
 
 @NgModule({
   declarations: [PostsCardComponent, CreatePostComponent, SinglePostComponent, PostsPage],
   imports: [MaterialModule, BrowserModule, ComponentsModule, RouterModule, ReactiveFormsModule],
-  providers: [PostsService ],
+  providers: [PostsService, CommentService ],
   exports: [],
 })
 export class PostsModule {}

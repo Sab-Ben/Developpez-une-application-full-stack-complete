@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
- * The type Topics extend Date Table Model.
+ * The type Topics extends Date Table Model.
  */
 @Entity
 @Table(name = "POSTS")
