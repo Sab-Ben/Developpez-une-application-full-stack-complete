@@ -1,0 +1,24 @@
+@import "../../../../../styles/main.scss";
+
+h1 {
+  font-weight: 700;
+}
+
+.post-description {
+  textarea {
+    resize: none;
+    height: 250px;
+
+    @include xs() {
+      height: 210px;
+    }
+  }
+}
+
+.submit-btn {
+  margin-top: 20px;
+
+  @include xs() {
+    margin-top: 0;
+  }
+}

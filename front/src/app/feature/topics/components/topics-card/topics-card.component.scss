@@ -1,0 +1,25 @@
+@import "../../../../../styles/styles.scss";
+
+.card {
+  padding: 10px 15px;
+  background-color: $grey-background;
+  box-shadow: none;
+  height: 100%;
+
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  :nth-child(2) {
+    flex: 1;
+    text-align: left;
+  }
+
+  [mat-flat-button] {
+    width: 170px;
+    display: block;
+    margin: auto;
+  }
+}

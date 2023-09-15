@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Developpez-une-application-full-stack-complete.iml" filepath="$PROJECT_DIR$/.idea/Developpez-une-application-full-stack-complete.iml" />
-      <module fileurl="file://$PROJECT_DIR$/back/src/main/main.iml" filepath="$PROJECT_DIR$/back/src/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/back/src/test/test.iml" filepath="$PROJECT_DIR$/back/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/back/mddapi.iml" filepath="$PROJECT_DIR$/back/mddapi.iml" />
     </modules>
   </component>
 </project>

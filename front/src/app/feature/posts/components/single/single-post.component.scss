@@ -1,0 +1,140 @@
+@import "../../../../../styles/mixins.scss";
+
+h1 {
+  font-weight: 700;
+}
+
+.posts {
+  margin-left: 20px;
+  text-align: left;
+
+  @include xs {
+    margin-left: 0;
+  }
+
+  &__info {
+    display: flex;
+    column-gap: 35px;
+    flex-wrap: wrap;
+  }
+
+  &__description {
+    white-space: pre-wrap;
+  }
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+mat-form-field {
+  width: 90%;
+  height: 120px;
+  margin: 0;
+  @include xs {
+    position: relative;
+    width: 100%;
+  }
+
+  textarea {
+    min-height: 120px !important;
+    width: 100% !important;
+    resize: none;
+    @include xs {
+      width: 90% !important;
+    }
+  }
+}
+
+.submit {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  @include xs() {
+    background-color: transparent;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    top: 0;
+  }
+
+  .icon {
+    @include xs() {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.comment {
+  padding-left: 20px;
+  padding-right: 50px;
+
+  @include xs() {
+    padding: 0;
+  }
+
+  &-container {
+    display: grid;
+    grid-template-columns: 100px 75vw;
+
+    @include md {
+      grid-template-columns: 100px auto;
+    }
+
+    @include xs {
+      grid-template-columns: unset;
+      margin-bottom: 30px;
+      order: -1;
+    }
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    column-gap: 20px;
+
+    @include xs {
+      position: relative;
+      display: unset;
+    }
+  }
+
+  &__description {
+    min-width: 500px;
+    min-height: 50px;
+    border-radius: 16px;
+    background: #eee;
+    padding: 20px;
+    word-break: break-all;
+    margin-left: 30px;
+
+    @include xs {
+      min-width: unset;
+      min-height: unset;
+      margin-left: 0;
+      width: 90%;
+      background: transparent;
+    }
+  }
+
+  &__author {
+    @include xs {
+      order: 1;
+      text-align: end;
+    }
+  }
+
+  &__input {
+    border: 1px solid #000;
+    background: #fff;
+    width: 570px;
+
+    @include xs {
+      width: 100%;
+    }
+  }
+}
