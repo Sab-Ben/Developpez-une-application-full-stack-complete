@@ -19,8 +19,7 @@ Our code squad: Sabrina student from OpenClassrooms.
 ## Contribute to the project
 This application is available on my github, it must be clone with command line 
 "git clone https://github.com/Sab-Ben/Developpez-une-application-full-stack-complete.git".
-When the project is cloned, it must be create a database with MySQL
-and use file script.sql available via 
+When the project is cloned, use file script.sql available via 
 Developpez-une-application-full-stack-complete/src/main/resources/script.sql
 
 
