@@ -13,6 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 /**
  * The type User controller.
+ *
+ *  @author Sabrina BENSEGHIR
+ *  @version 1.0
+ *  @since   01-09-2023
  */
 
 @RestController
@@ -40,6 +44,13 @@ public class  UsersController implements SecurityController{
         this.modelMapper = modelMapper;
     }
 
+
+    /**
+     * Get the user information.
+     *
+     * @return A ResponseEntity with the user's information in the form of a DTO (Data Transfer Object)
+     *         upon successful retrieval or an error message for unauthorized access.
+     */
     @Operation(summary = "Get the user information")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "200"),
@@ -52,6 +63,14 @@ public class  UsersController implements SecurityController{
         return ResponseEntity.ok(this.modelMapper.map(user, UsersDto.class));
     }
 
+
+    /**
+     * Update user profile.
+     *
+     * @param usersDto The user data transfer object (DTO) containing updated user profile information.
+     * @return A ResponseEntity with the updated user profile information in the form of a DTO upon
+     *         successful update or an error message for unauthorized access.
+     */
     @Operation(summary = "Update user profile")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),

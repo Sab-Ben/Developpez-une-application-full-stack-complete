@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * The type Comments controller.
+ *
+ *  @author Sabrina BENSEGHIR
+ *  @version 1.0
+ *  @since   01-09-2023
  */
 
 @RestController
@@ -37,12 +41,18 @@ public class CommentsController implements SecurityController{
      * @param commentsService the comments service
      * @param commentsMapper the comments mapper
      */
-
     public CommentsController(CommentsService commentsService, CommentsMapper commentsMapper) {
         this.commentsService = commentsService;
         this.commentsMapper = commentsMapper;
     }
 
+
+    /**
+     * Get comments.
+     *
+     * @param id The ID of the post for which comments will be retrieved.
+     * @return A ResponseEntity to indicate a successful request or an error message for unauthorized access.
+     */
     @Operation(summary = "Get comments")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
@@ -54,6 +64,13 @@ public class CommentsController implements SecurityController{
     }
 
 
+    /**
+     * Create comment.
+     *
+     * @param commentsDto The comment data transfer object (DTO) containing the content and details of the new comment.
+     * @return A ResponseEntity with the newly created comment in the form of a DTO upon successful creation or
+     *         an error message for unauthorized access.
+     */
     @Operation(summary = "Create comment")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),

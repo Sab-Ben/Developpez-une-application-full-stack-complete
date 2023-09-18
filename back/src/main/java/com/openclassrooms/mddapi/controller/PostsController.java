@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * The type Posts controller.
+ *
+ *  @author Sabrina BENSEGHIR
+ *  @version 1.0
+ *  @since   01-09-2023
  */
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -51,7 +55,6 @@ public class PostsController implements SecurityController{
      * @param commentsService the comments service
      * @param commentsMapper the comments mapper
      */
-
     public PostsController(PostsService postsService, PostsMapper postsMapper, CommentsService commentsService, CommentsMapper commentsMapper) {
         this.postsService = postsService;
         this.postsMapper = postsMapper;
@@ -59,7 +62,13 @@ public class PostsController implements SecurityController{
         this.commentsMapper = commentsMapper;
     }
 
-    @Operation(summary = "Get all topics")
+    /**
+     * Get all posts.
+     *
+     * @return A ResponseEntity with a collection of posts in the form of DTOs (Data Transfer Objects)
+     *         upon successful retrieval or an error message for unauthorized access.
+     */
+    @Operation(summary = "Get all posts")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
             @ApiResponse(responseCode = "401", content = @Content)
@@ -71,8 +80,15 @@ public class PostsController implements SecurityController{
         return ResponseEntity.ok(postsResponse);
     }
 
-
-    @Operation(summary = "Get topic")
+    /**
+     * Get post by ID.
+     *
+     * @param id The ID of the post to retrieve.
+     * @return A ResponseEntity with the post information in the form of a DTO (Data Transfer Object)
+     *         upon successful retrieval, a not found response if the post does not exist, or
+     *         a bad request response if the provided ID is invalid.
+     */
+    @Operation(summary = "Get post")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
             @ApiResponse(responseCode = "401", content = @Content)
@@ -90,7 +106,15 @@ public class PostsController implements SecurityController{
         }
     }
 
-    @Operation(summary = "Create topic")
+
+    /**
+     * Create a new post.
+     *
+     * @param postsDto The post data transfer object (DTO) containing the content and details of the new post.
+     * @return A ResponseEntity with the newly created post in the form of a DTO upon
+     *         successful creation or an error message for unauthorized access.
+     */
+    @Operation(summary = "Create post")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
             @ApiResponse(responseCode = "401", content = @Content)
@@ -101,6 +125,13 @@ public class PostsController implements SecurityController{
         return ResponseEntity.ok(this.postsMapper.map(post, PostsDto.class));
     }
 
+    /**
+     * Get comments for a post by its ID.
+     *
+     * @param id The ID of the post for which comments will be retrieved.
+     * @return A ResponseEntity with a collection of comments in the form of DTOs (Data Transfer Objects)
+     *         upon successful retrieval or an error message for unauthorized access.
+     */
     @Operation(summary = "Get comments")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
@@ -112,5 +143,4 @@ public class PostsController implements SecurityController{
         Iterable<CommentsDto> formattedComments = this.commentsMapper.mapToDtoList(comments);
         return ResponseEntity.ok(formattedComments);
     }
-
 }

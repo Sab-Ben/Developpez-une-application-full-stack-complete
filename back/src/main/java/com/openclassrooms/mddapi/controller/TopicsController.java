@@ -13,6 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 /**
  * The type Topics controller.
+ *
+ *  @author Sabrina BENSEGHIR
+ *  @version 1.0
+ *  @since   01-09-2023
  */
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -38,6 +42,12 @@ public class TopicsController implements SecurityController {
         this.modelMapper = modelMapper;
     }
 
+    /**
+     * Get all topics.
+     *
+     * @return A ResponseEntity with a collection of all topics in the form of DTOs (Data Transfer Objects)
+     *         upon successful retrieval or an error message for unauthorized access.
+     */
     @Operation(summary = "Get all topics")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
@@ -50,6 +60,14 @@ public class TopicsController implements SecurityController {
         return ResponseEntity.ok(topicsDto);
     }
 
+
+    /**
+     * Get one topic by its ID.
+     *
+     * @param id The ID of the topic to retrieve.
+     * @return A ResponseEntity with the topic information upon successful retrieval or an error message
+     *         for unauthorized access.
+     */
     @Operation(summary = "Get one topic")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
@@ -61,6 +79,13 @@ public class TopicsController implements SecurityController {
         return ResponseEntity.ok(topics);
     }
 
+
+    /**
+     * Get user's subscriptions.
+     *
+     * @return A ResponseEntity with a collection of topics the user is subscribed to in the form of DTOs
+     *         (Data Transfer Objects) upon successful retrieval or an error message for unauthorized access.
+     */
     @Operation(summary = "Get subscription")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
@@ -73,6 +98,13 @@ public class TopicsController implements SecurityController {
         return ResponseEntity.ok(topicsDto);
     }
 
+    /**
+     * Subscribe to a topic.
+     *
+     * @param topicsId The ID of the topic to subscribe to.
+     * @return A ResponseEntity to indicate successful subscription or a bad request response
+     *         if the provided topic ID is invalid.
+     */
     @Operation(summary = "Subscribe topic")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
@@ -88,6 +120,13 @@ public class TopicsController implements SecurityController {
         }
     }
 
+    /**
+     * Unsubscribe from a topic.
+     *
+     * @param topicsId The ID of the topic to unsubscribe from.
+     * @return A ResponseEntity to indicate successful unsubscription or a bad request response
+     *         if the provided topic ID is invalid.
+     */
     @Operation(summary = "Unsubscribe topic")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200"),
