@@ -26,7 +26,7 @@ public class Topics extends DateTableModel{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3)
+
     @Column(name = "title")
     private String title;
 
